@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JPPP Comercial — Gestão Processual</title>
+<style>
+:root{--bg:#f4f5f7;--surface:#fff;--ink:#22232a;--muted:#6c707c;--line:#e3e5e9;--accent:#32323c;--accent2:#565661;--soft:#ececf1;--green:#16794b;--amber:#986500;--red:#b42318;--shadow:0 8px 28px rgba(26,28,36,.06)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer} .app{display:grid;grid-template-columns:245px 1fr;min-height:100vh}.sidebar{background:#292a32;color:#f8f8ff;padding:24px 16px;display:flex;flex-direction:column;gap:24px}.brand{display:flex;align-items:center;gap:10px;padding:0 8px}.brand-logo{width:62px;height:62px;flex:0 0 62px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:3px}.brand-logo img{width:100%;height:100%;object-fit:contain}.brand strong{font-size:18px;letter-spacing:.2px}.brand small{display:block;color:#b8b8c3;font-size:11px;margin-top:1px}.nav{display:grid;gap:6px}.nav button{border:0;background:transparent;color:#d8d8e0;text-align:left;padding:12px 13px;border-radius:10px;display:flex;gap:11px;align-items:center}.nav button.active,.nav button:hover{background:#41424c;color:white}.nav .ico{width:19px;text-align:center}.side-note{margin-top:auto;border-top:1px solid #4b4c55;padding:16px 8px;color:#bdbdc8;font-size:12px}.main{min-width:0}.topbar{height:74px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 32px;gap:16px}.topbar .eyebrow{font-size:12px;color:var(--muted)}.topbar h1{font-size:20px;margin:2px 0 0}.top-actions{display:flex;gap:9px;align-items:center}.content{padding:28px 32px;max-width:1500px;margin:auto}.pagehead{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:22px}.pagehead h2{margin:0 0 5px;font-size:25px;letter-spacing:-.4px}.pagehead p{margin:0;color:var(--muted)}.btn{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:9px;padding:10px 14px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:8px}.btn:hover{background:#f8f8fa}.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}.btn.primary:hover{background:#464650}.btn.danger{color:var(--red)}.btn.small{padding:7px 10px;font-size:13px}.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:22px}.metric{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:19px;box-shadow:var(--shadow)}.metric .label{font-size:12px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}.metric .value{font-size:clamp(20px,2.2vw,28px);font-weight:750;letter-spacing:-.8px;margin:10px 0 5px;overflow-wrap:anywhere}.metric .sub{font-size:12px;color:var(--muted)}.metric .mark{background:var(--soft);border-radius:8px;padding:6px 8px;color:#454651}.panel{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:20px}.panel-head{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:14px}.panel-head h3{font-size:16px;margin:0}.panel-head p{margin:3px 0 0;color:var(--muted);font-size:12px}.filters{display:flex;gap:9px;flex-wrap:wrap;padding:15px 20px;border-bottom:1px solid var(--line)}.control{border:1px solid #d9dbe1;background:white;color:var(--ink);padding:10px 11px;border-radius:8px;min-width:0}.filters .control{flex:1;min-width:150px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;white-space:nowrap}th,td{text-align:left;padding:14px 18px;border-bottom:1px solid #eff0f3;font-size:13px}th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.55px;background:#fbfbfc}tbody tr:hover{background:#fcfcfd}tbody tr:last-child td{border-bottom:0}.case-name{font-weight:700;font-size:13px}.case-sub{font-size:12px;color:var(--muted);margin-top:3px}.money{font-variant-numeric:tabular-nums;font-weight:650}.badge{display:inline-flex;align-items:center;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:700;background:#eeeef2;color:#454651}.badge.green{background:#e7f5ed;color:#16794b}.badge.blue{background:#e9f0ff;color:#244c9b}.badge.amber{background:#fff3d9;color:#875900}.badge.red{background:#fdebea;color:#a32922}.actions{display:flex;gap:6px}.iconbtn{border:1px solid var(--line);background:white;border-radius:7px;width:31px;height:31px}.iconbtn:hover{background:#f1f1f5}.empty{padding:45px 20px;text-align:center;color:var(--muted)}.empty strong{display:block;color:var(--ink);font-size:16px;margin-bottom:6px}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:12px;font-weight:700;color:#50535d}.field input,.field select,.field textarea{width:100%;border:1px solid #d9dbe1;border-radius:8px;padding:11px 12px;background:#fff;color:var(--ink);min-width:0}.field textarea{min-height:85px;resize:vertical}.field .hint{font-size:11px;color:var(--muted)}.formsection{grid-column:1/-1;padding-top:12px;border-top:1px solid var(--line);font-size:13px;font-weight:800;margin-top:3px}.formfoot{display:flex;justify-content:space-between;gap:10px;margin-top:22px;flex-wrap:wrap}.modal-backdrop{position:fixed;inset:0;background:rgba(23,24,30,.48);z-index:10;display:none;align-items:center;justify-content:center;padding:20px}.modal-backdrop.show{display:flex}.modal{background:white;border-radius:16px;width:min(820px,100%);max-height:92vh;overflow:auto;box-shadow:0 20px 70px rgba(0,0,0,.2)}.modalhead{padding:20px 24px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px}.modalhead h2{margin:0;font-size:19px}.modalbody{padding:22px 24px}.close{border:0;background:#f0f0f3;border-radius:8px;width:34px;height:34px;font-size:20px}.notice{border-radius:10px;background:#f7f7fa;border:1px solid var(--line);padding:13px 15px;font-size:12px;color:#5e606a;margin-bottom:16px}.chartgrid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}.bars{display:grid;gap:14px;padding:20px}.barrow{display:grid;grid-template-columns:130px 1fr 105px;gap:10px;align-items:center;font-size:12px}.track{height:9px;border-radius:99px;background:#eeeeF2;overflow:hidden}.fill{height:100%;background:#565661;border-radius:99px}.stage-list{padding:12px 20px;display:grid;gap:4px}.stage{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid #eff0f3;gap:12px;font-size:13px}.stage:last-child{border:0}.stage .left{display:flex;align-items:center;gap:10px}.dot{width:9px;height:9px;border-radius:50%;background:#737482}.settings{display:grid;grid-template-columns:1fr 1fr;gap:15px;padding:20px}.settings-card{border:1px solid var(--line);border-radius:12px;padding:17px}.settings-card h4{margin:0 0 6px}.settings-card p{font-size:12px;color:var(--muted);margin:0 0 14px}.toast{position:fixed;bottom:20px;right:20px;background:#282932;color:white;padding:12px 17px;border-radius:10px;box-shadow:var(--shadow);display:none;z-index:20;font-size:13px}.toast.show{display:block}.mobile-menu{display:none}.hidden{display:none!important}
+@media(max-width:1050px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.chartgrid{grid-template-columns:1fr}.app{grid-template-columns:210px 1fr}.content{padding:24px}.topbar{padding:0 24px}}
+@media(max-width:720px){.app{display:block}.sidebar{display:none;position:fixed;z-index:15;inset:0 auto 0 0;width:260px;box-shadow:0 0 0 100vmax rgba(0,0,0,.35)}.sidebar.open{display:flex}.mobile-menu{display:inline-flex}.topbar{height:66px;padding:0 15px}.topbar h1{font-size:17px}.topbar .eyebrow{display:none}.top-actions .btn .btntext{display:none}.content{padding:20px 14px}.pagehead{align-items:stretch;flex-direction:column}.pagehead h2{font-size:23px}.pagehead .btn{width:100%}.cards{gap:9px}.metric{padding:14px}.metric .value{font-size:21px}.metric .label{font-size:11px}.metric .sub{font-size:11px}.panel-head{padding:15px}.filters{padding:12px;gap:7px}.filters .control{min-width:100%;width:100%}.formgrid{grid-template-columns:1fr}.field.full,.formsection{grid-column:1}.modal-backdrop{padding:0;align-items:flex-end}.modal{border-radius:17px 17px 0 0;max-height:94vh}.modalhead,.modalbody{padding:17px}.settings{grid-template-columns:1fr;padding:14px}.barrow{grid-template-columns:90px 1fr 80px;font-size:11px}.top-actions{gap:6px}.table-wrap{overflow:visible}table,thead,tbody,tr,td{display:block}thead{display:none}tbody{padding:4px 12px}tbody tr{border:1px solid var(--line);border-radius:10px;margin:10px 0;padding:8px 12px;background:#fff}td{display:flex;align-items:flex-start;justify-content:space-between;gap:15px;padding:8px 0;border:0;white-space:normal;text-align:right}td:before{content:attr(data-label);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.3px;text-align:left;flex:0 0 42%}td:first-child{display:block;text-align:left;padding-bottom:10px;border-bottom:1px solid #eff0f3;margin-bottom:5px}td:first-child:before{display:none}td:last-child{padding-top:9px}.actions{justify-content:flex-end}.case-name{font-size:14px}.case-sub{font-size:11px}}
+.cda-list{display:grid;gap:12px}.cda-card{border:1px solid var(--line);border-radius:12px;padding:14px;background:#fbfbfc}.cda-card-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}.cda-card-head strong{font-size:13px}.cda-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.cda-grid .field label{font-size:11px}.cda-grid .field input{padding:9px 10px}.cda-grid .wide{grid-column:span 2}.cda-result{margin-top:10px;font-size:12px;color:#454651;background:#fff;border:1px dashed #d9dbe1;border-radius:8px;padding:9px 11px}.cda-result strong{color:var(--ink)}.cda-toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.field input.invalid{border-color:var(--red);background:#fffafa}.hint.err{color:var(--red)}
+.att-row{display:flex;justify-content:space-between;align-items:center;gap:12px;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#fbfbfc;font-size:13px}.att-row .att-meta{font-size:11px;color:var(--muted);margin-top:2px}.att-row .att-new{color:var(--amber);font-weight:700}.client-detail>td{background:#fafafc;padding:0 18px 14px!important}.client-detail table{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}.client-detail th,.client-detail td{padding:9px 12px}.linkbtn{border:0;background:none;color:#244c9b;font-weight:700;padding:0;font-size:12px}
+@media(max-width:720px){.att-row{flex-direction:column;align-items:flex-start}.client-detail>td{padding:0!important}}
+@media(max-width:720px){.cda-grid{grid-template-columns:1fr 1fr}.cda-grid .wide{grid-column:1/-1}}
+.syncstatus{font-size:12px;font-weight:600;padding:6px 10px;border-radius:999px;background:#eef0f4;color:#555;white-space:nowrap;align-self:center}.syncstatus.ok{background:#e4f6ea;color:#17652f}.syncstatus.busy{background:#fff4d6;color:#8a5a00}.syncstatus.err{background:#fde7e7;color:#a11a1a}.top-actions{flex-wrap:wrap}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+  <div class="brand" style="align-items:center;gap:10px;padding:0 2px"><div class="brand-logo"><img src="logo.png" alt="Logo Justus Paiva Preis Pavan"></div><div><strong>JPPP Comercial</strong><small>Gestão processual e honorários</small></div></div>
+  <nav class="nav">
+    <button class="active" data-page="dashboard"><span class="ico">▦</span> Visão geral</button>
+    <button data-page="processos"><span class="ico">▤</span> Processos</button>
+    <button data-page="clientes"><span class="ico">◉</span> Clientes</button>
+    <button data-page="requisitorios"><span class="ico">▣</span> RPVs e precatórios</button>
+    <button data-page="relatorios"><span class="ico">▥</span> Relatórios</button>
+    <button data-page="dados"><span class="ico">⚙</span> Dados e segurança</button>
+  </nav>
+  <div class="side-note">Versão 7 · Dados compartilhados no Supabase.<br><br>As alterações de outros usuários aparecem automaticamente. Faça backups regulares.</div>
+</aside>
+<main class="main">
+  <header class="topbar">
+    <div style="display:flex;align-items:center;gap:12px"><button class="btn mobile-menu" id="menuBtn" aria-label="Abrir menu">☰</button><div><div class="eyebrow">GESTÃO DA CARTEIRA</div><h1 id="topTitle">Visão geral</h1></div></div>
+    <div class="top-actions"><span class="syncstatus busy" id="syncStatus">● Sincronizando…</span><button class="btn" id="syncBtn" title="Buscar as alterações mais recentes">⟳ <span class="btntext">Sincronizar</span></button><button class="btn" id="exportTop">⇩ <span class="btntext">Exportar backup</span></button><button class="btn primary" id="newTop">＋ <span class="btntext">Novo processo</span></button></div>
+  </header>
+  <div class="content">
+    <section id="page-dashboard">
+      <div class="pagehead"><div><h2>Sua carteira, em perspectiva.</h2><p>Acompanhe o potencial econômico e os honorários sucumbenciais.</p></div><button class="btn primary" id="newDash">＋ Cadastrar processo</button></div>
+      <div class="cards" id="metrics"></div>
+      <div class="chartgrid">
+        <div class="panel"><div class="panel-head"><div><h3>Honorários por fase</h3><p>Potencial bruto cadastrado por etapa processual</p></div></div><div id="stageBars" class="bars"></div></div>
+        <div class="panel"><div class="panel-head"><div><h3>Distribuição da carteira</h3><p>Quantidade de processos por status</p></div></div><div class="stage-list" id="stageCounts"></div></div>
+      </div>
+      <div class="panel"><div class="panel-head"><div><h3>Processos atualizados recentemente</h3><p>Seus registros mais recentes</p></div><button class="btn small" data-goto="processos">Ver carteira →</button></div><div class="table-wrap"><table><thead><tr><th>Processo / cliente</th><th>Fase</th><th>Proveito esperado</th><th>Honorários estimados</th><th>Status</th><th></th></tr></thead><tbody id="recentRows"></tbody></table></div></div>
+    </section>
+    <section id="page-processos" class="hidden">
+      <div class="pagehead"><div><h2>Carteira de processos</h2><p>Cadastre, pesquise e atualize seus casos.</p></div><button class="btn primary" id="newCases">＋ Novo processo</button></div>
+      <div class="panel"><div class="filters"><input class="control" id="search" placeholder="Buscar cliente, número ou assunto…"><select class="control" id="filterStatus"><option value="">Todos os status</option></select><select class="control" id="filterStage"><option value="">Todas as fases</option></select><select class="control" id="sortBy"><option value="updated">Mais recentes</option><option value="benefit">Maior proveito econômico</option><option value="fees">Maiores honorários</option><option value="name">Cliente (A–Z)</option></select></div><div class="table-wrap"><table><thead><tr><th>Processo / cliente</th><th>Fase</th><th>Proveito esperado</th><th>Honorários estimados</th><th>Êxito</th><th>Status</th><th>Ações</th></tr></thead><tbody id="caseRows"></tbody></table></div></div>
+    </section>
+    <section id="page-clientes" class="hidden">
+      <div class="pagehead"><div><h2>Painel por cliente</h2><p>Processos, CDAs, proveito e honorários agrupados por CPF/CNPJ (ou pelo nome, quando o documento não estiver cadastrado).</p></div></div>
+      <div class="cards" id="clientMetrics"></div>
+      <div class="panel"><div class="filters"><input class="control" id="clientSearch" placeholder="Buscar cliente, CPF/CNPJ, processo ou CDA…"><select class="control" id="clientSort"><option value="fees">Maiores honorários</option><option value="benefit">Maior proveito econômico</option><option value="cases">Mais processos</option><option value="name">Cliente (A–Z)</option></select></div><div class="table-wrap"><table><thead><tr><th>Cliente</th><th>Processos</th><th>CDAs</th><th>Proveito esperado</th><th>Honorários estimados</th><th>Fixados / recebidos</th><th></th></tr></thead><tbody id="clientRows"></tbody></table></div></div>
+      <div class="notice">Processos sem CPF/CNPJ são agrupados pelo nome do cliente. Cadastre o documento para que variações de grafia (ex.: “Helbert” e “Herbert”) caiam no mesmo grupo. Os totais consideram todos os processos do cliente, ativos ou não; a coluna de honorários estimados soma somente os ativos.</div>
+    </section>
+    <section id="page-requisitorios" class="hidden">
+      <div class="pagehead"><div><h2>RPVs e precatórios</h2><p>Acompanhe cumprimento de sentença, expedição, cessão/venda e deságio.</p></div><button class="btn primary" id="newRequisitorio">＋ Cadastrar processo</button></div>
+      <div class="cards" id="requisitorioMetrics"></div>
+      <div class="panel"><div class="filters"><input class="control" id="reqSearch" placeholder="Buscar cliente ou processo…"><select class="control" id="reqTypeFilter"><option value="">RPVs e precatórios</option><option value="RPV">Somente RPV</option><option value="Precatório">Somente precatório</option></select><select class="control" id="reqComplianceFilter"><option value="">Cumprimento: todos</option><option value="Sim">Cumprimento iniciado</option><option value="Não">Sem cumprimento</option></select><select class="control" id="reqIssuedFilter"><option value="">Expedição: todos</option><option value="Expedido">Expedidos</option><option value="Não expedido">Não expedidos</option></select><select class="control" id="reqSoldFilter"><option value="">Venda: todas</option><option value="Sim">Vendidos</option><option value="Não">Não vendidos</option></select></div><div class="table-wrap"><table><thead><tr><th>Cliente / processo</th><th>Tipo</th><th>Cumprimento</th><th>Expedição</th><th>Valor requisitado</th><th>Venda / deságio</th><th>Valor líquido estimado</th><th>Ações</th></tr></thead><tbody id="requisitorioRows"></tbody></table></div></div>
+      <div class="notice">O valor líquido estimado é calculado como valor requisitado menos o deságio informado. Registre o deságio em percentual (por exemplo, 25%); o cálculo é gerencial e não substitui a conferência do contrato de cessão.</div>
+    </section>
+    <section id="page-relatorios" class="hidden">
+      <div class="pagehead"><div><h2>Relatórios</h2><p>Resumo financeiro da carteira cadastrada.</p></div><button class="btn" id="exportCsv">⇩ Exportar CSV</button></div>
+      <div class="cards" id="reportMetrics"></div>
+      <div class="panel"><div class="panel-head"><div><h3>Resumo por fase processual</h3><p>Valores potenciais e ponderados pela probabilidade de êxito</p></div></div><div class="table-wrap"><table><thead><tr><th>Fase</th><th>Processos</th><th>Proveito econômico</th><th>Honorários potenciais</th><th>Honorários ponderados</th></tr></thead><tbody id="reportRows"></tbody></table></div></div>
+      <div class="notice">Os valores ponderados são estimativas gerenciais, não uma previsão garantida de resultado. Honorários sucumbenciais dependem do resultado, da fixação judicial e da efetiva possibilidade de recebimento.</div>
+    </section>
+    <section id="page-dados" class="hidden">
+      <div class="pagehead"><div><h2>Dados e segurança</h2><p>Controle seus dados e mantenha uma cópia de segurança.</p></div></div>
+      <div class="notice"><strong>Privacidade nesta versão:</strong> os registros são compartilhados entre os usuários pelo banco Supabase e também ficam em cópia no armazenamento local deste navegador. Os cadastros incluem CPF/CNPJ de clientes, que são dados pessoais: não use em dispositivo compartilhado sem proteção e exporte backups regularmente.</div>
+      <div class="settings">
+        <div class="settings-card"><h4>Exportar backup</h4><p>Baixe todos os processos em um arquivo JSON para guardar ou importar depois.</p><button class="btn primary" id="exportJson">⇩ Baixar backup JSON</button></div>
+        <div class="settings-card"><h4>Importar backup</h4><p>Restaure um backup JSON. Você poderá substituir ou mesclar os registros atuais.</p><input type="file" id="importFile" accept=".json,application/json" class="control" style="width:100%;margin-bottom:10px"><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" id="mergeImport">Mesclar dados</button><button class="btn" id="replaceImport">Substituir tudo</button></div></div>
+        <div class="settings-card"><h4>Exportar planilha</h4><p>Gere um CSV compatível com Excel para análises e relatórios.</p><button class="btn" id="exportCsv2">⇩ Exportar CSV</button></div>
+        <div class="settings-card"><h4>Apagar dados locais</h4><p>Remove TODOS os processos do banco compartilhado, para todos os usuários. Faça backup antes de continuar.</p><button class="btn danger" id="clearData">Apagar todos os dados</button></div>
+      </div>
+    </section>
+  </div>
+</main>
+</div>
+<div class="modal-backdrop" id="modal">
+  <div class="modal"><div class="modalhead"><h2 id="modalTitle">Novo processo</h2><button class="close" id="closeModal" aria-label="Fechar">×</button></div><div class="modalbody">
+    <div class="notice">Cadastre os valores de proveito econômico e honorários sucumbenciais estimados. Para causas em que a Fazenda Pública seja parte, você pode selecionar o cálculo progressivo do art. 85, § 3º, do CPC. Confira a base e os percentuais aplicáveis ao caso concreto. Também é possível registrar a redução judicial de 50% dos honorários, quando aplicável o art. 90, § 4º, do CPC.</div>
+    <form id="caseForm">
+      <input type="hidden" id="caseId">
+      <div class="formgrid">
+        <div class="field"><label for="client">Cliente / empresa *</label><input id="client" required placeholder="Nome do cliente"></div>
+        <div class="field"><label for="clientDoc">CPF / CNPJ do cliente</label><input id="clientDoc" inputmode="numeric" maxlength="18" placeholder="000.000.000-00 ou 00.000.000/0000-00"><span class="hint" id="clientDocHint">Formatação e dígitos verificadores conferidos automaticamente.</span></div>
+        <div class="field"><label for="number">Número do processo</label><input id="number" placeholder="0000000-00.0000.0.00.0000"></div>
+        <div class="field"><label for="subject">Assunto / tipo de ação</label><input id="subject" placeholder="Ex.: Exceção de pré-executividade"></div>
+        <div class="field"><label for="court">Tribunal / vara</label><input id="court" placeholder="Ex.: TJPR — Vara de Execuções Fiscais"></div>
+        <div class="field"><label for="opponent">Parte contrária</label><input id="opponent" placeholder="Ex.: Estado do Paraná"></div>
+        <div class="field"><label for="responsible">Responsável / observação curta</label><input id="responsible" placeholder="Responsável pelo caso"></div>
+        <div class="formsection">Andamento processual</div>
+        <div class="field"><label for="status">Status *</label><select id="status" required><option>Em andamento</option><option>Êxito obtido</option><option>Êxito parcial</option><option>Desfavorável</option><option>Encerrado</option><option>Suspenso</option></select></div>
+        <div class="field"><label for="stage">Fase processual *</label><select id="stage" required></select></div>
+        <div class="field"><label for="updatedAt">Data da última atualização</label><input id="updatedAt" type="date"></div>
+        <div class="field"><label for="nextAction">Próxima providência / prazo</label><input id="nextAction" placeholder="Ex.: Aguardar julgamento do agravo"></div>
+        <div class="formsection">RPV / precatório — acompanhamento de recebimento</div>
+        <div class="field"><label for="requisitionType">Tipo de requisição</label><select id="requisitionType"><option value="">Não definido / não se aplica</option><option value="RPV">RPV</option><option value="Precatório">Precatório</option></select><span class="hint">A seleção inclui o processo no painel de RPVs e precatórios.</span></div>
+        <div class="field"><label for="complianceFiled">Cumprimento de sentença iniciado?</label><select id="complianceFiled"><option value="Não">Não</option><option value="Sim">Sim</option></select></div>
+        <div class="field"><label for="requisitionStatus">Situação da expedição</label><select id="requisitionStatus"><option value="Não expedido">Não expedido</option><option value="Expedido">Expedido</option><option value="Pago">Pago</option></select></div>
+        <div class="field"><label for="requisitionAmount">Valor requisitado (R$)</label><input id="requisitionAmount" type="number" min="0" step="0.01" placeholder="Valor da RPV ou do precatório"></div>
+        <div class="field"><label for="requisitionDate">Data de expedição</label><input id="requisitionDate" type="date"></div>
+        <div class="field"><label for="sold">Requisição vendida / cedida?</label><select id="sold"><option value="Não">Não</option><option value="Sim">Sim</option></select></div>
+        <div class="field"><label for="discountPct">Deságio na venda (%)</label><input id="discountPct" type="number" min="0" max="100" step="0.01" value="0"><span class="hint">Informe o percentual de deságio negociado.</span></div>
+        <div class="field"><label for="saleDate">Data da venda / cessão</label><input id="saleDate" type="date"></div>
+        <div class="field"><label for="saleNotes">Observações da requisição / cessão</label><input id="saleNotes" placeholder="Cessionário, contrato, parcelas ou pendências"></div>
+        <div class="field full" id="netValuePreviewField"><div class="notice" id="netValuePreview" style="margin:0">Valor líquido estimado após o deságio: R$ 0,00</div></div>
+        <div class="formsection">CDAs vinculadas ao processo</div>
+        <div class="field full"><div class="notice" style="margin:0">Cadastre as CDAs executadas neste processo. Com principal, multa e juros preenchidos, o sistema estima a redução pelo limite da multa a 100% do tributo (Tema 863/STF) e o corte proporcional dos juros. Se os juros sobre a multa vierem destacados (ex.: PGE-SP), o corte incide sobre eles; se vierem em valor único (ex.: guia do PR), o corte é proporcional à participação da multa em tributo + multa. Para cálculos feitos fora do sistema (ex.: limitação por infração), use o campo “Redução manual”.</div></div>
+        <div class="field full"><div class="cda-list" id="cdaList"></div></div>
+        <div class="field full"><div class="cda-toolbar"><button type="button" class="btn small" id="addCda">＋ Adicionar CDA</button><button type="button" class="btn small" id="useCdaBenefit">↧ Usar total das reduções como proveito econômico</button></div></div>
+        <div class="field full"><div class="notice" id="cdaSummary" style="margin:0">Nenhuma CDA cadastrada.</div></div>
+        <div class="formsection">Proveito econômico e honorários sucumbenciais</div>
+        <div class="field"><label for="claimValue">Valor da causa / débito discutido (R$)</label><input id="claimValue" type="number" min="0" step="0.01" placeholder="0,00"></div>
+        <div class="field"><label for="benefit">Proveito econômico esperado (R$) *</label><input id="benefit" type="number" min="0" step="0.01" required placeholder="0,00"><span class="hint">Ex.: redução do débito, economia tributária ou valor recuperável.</span></div>
+        <div class="field"><label for="feeMode">Método de estimativa dos honorários</label><select id="feeMode"><option value="percent">Percentual simples do proveito</option><option value="escalonado">Escalonado — art. 85, § 3º, CPC</option><option value="fixed">Valor estimado fixo</option></select></div>
+        <div class="field" id="feePercentField"><label for="feePercent">Percentual estimado (%)</label><input id="feePercent" type="number" min="0" max="100" step="0.01" value="10"><span class="hint">Referência gerencial; não substitui a fixação judicial.</span></div>
+        <div class="field" id="feeFixedField"><label for="feeFixed">Honorários estimados fixos (R$)</label><input id="feeFixed" type="number" min="0" step="0.01" placeholder="Use se selecionou valor fixo"></div>
+        <div class="field hidden" id="minimumWageField"><label for="minimumWage">Salário mínimo de referência (R$)</label><input id="minimumWage" type="number" min="0.01" step="0.01" value="1621"><span class="hint">Base para converter as faixas em salários mínimos. Confira o valor aplicável ao caso.</span></div>
+        <div class="field hidden" id="tierProfileField"><label for="tierProfile">Percentuais aplicados às faixas</label><select id="tierProfile"><option value="min">Mínimos legais</option><option value="mid" selected>Ponto médio das faixas</option><option value="max">Máximos legais</option></select><span class="hint">Referência estimativa; a fixação judicial considera os critérios legais do caso.</span></div>
+        <div class="field full hidden" id="tierPreviewField"><div class="notice" id="tierPreview" style="margin:0">O cálculo será demonstrado por faixas progressivas.</div></div>
+        <div class="field"><label for="probability">Probabilidade estimada de êxito (%)</label><input id="probability" type="number" min="0" max="100" step="1" value="50"></div>
+        <div class="field"><label for="judicialFeeAmount">Honorários fixados judicialmente (R$)</label><input id="judicialFeeAmount" type="number" min="0" step="0.01" value="0"><span class="hint">Informe o valor efetivamente fixado na decisão, distinto da estimativa potencial.</span></div>
+        <div class="field"><label for="feeReceived">Honorários recebidos (R$)</label><input id="feeReceived" type="number" min="0" step="0.01" value="0"></div>
+        <div class="field"><label for="feeHalf">O juiz reduziu os honorários pela metade?</label><select id="feeHalf"><option value="Não">Não</option><option value="Sim">Sim — redução de 50% (art. 90, § 4º, CPC)</option></select><span class="hint">Marque “Sim” somente se a redução tiver sido reconhecida no caso concreto.</span></div>
+        <div class="field"><label for="feeStatus">Situação dos honorários</label><select id="feeStatus"><option>Não fixados</option><option>Estimados</option><option>Fixados</option><option>Transitados em julgado</option><option>Em cumprimento</option><option>Recebidos parcialmente</option><option>Recebidos integralmente</option></select></div>
+        <div class="formsection">Anexos</div>
+        <div class="field"><label for="attCategory">Tipo de documento</label><select id="attCategory"><option>CDA</option><option>Guia / extrato de débito</option><option>Petição</option><option>Decisão / sentença</option><option>Cálculo / planilha</option><option>Contrato / procuração</option><option>Outro</option></select></div>
+        <div class="field"><label for="attDesc">Descrição (opcional)</label><input id="attDesc" placeholder="Ex.: CDA 1268508244 — certidão originária"></div>
+        <div class="field full"><label for="attFile">Arquivos</label><input type="file" id="attFile" multiple class="control"><span class="hint">Até 25 MB por arquivo. O envio é imediato; a lista do processo só é gravada ao clicar em “Salvar processo”.</span></div>
+        <div class="field full"><div id="attList" class="cda-list"></div></div>
+        <div class="field full"><label for="notes">Anotações</label><textarea id="notes" placeholder="Estratégia, fundamentos relevantes, valores de referência…"></textarea></div>
+      </div>
+      <div class="formfoot"><button type="button" class="btn danger hidden" id="deleteFromForm">Excluir processo</button><div style="display:flex;gap:8px;margin-left:auto"><button type="button" class="btn" id="cancelForm">Cancelar</button><button type="submit" class="btn primary">Salvar processo</button></div></div>
+    </form>
+  </div></div>
+</div>
+<div class="toast" id="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script>
+(() => {
+const KEY='lexfinance_processos_v1';
+const SUPABASE_URL='https://mednetqigvyydgpgpyjx.supabase.co';
+const SUPABASE_PUBLIC_KEY='sb_publishable_lsO7Q64qtXpYUntPEpjODg_kUhb3hj8';
+const supabase=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLIC_KEY);
+const STAGES=['Análise inicial','Conhecimento','Sentença','Recurso','Execução / cumprimento','Aguardando recebimento','Encerrado'];
+const STATUSES=['Em andamento','Êxito obtido','Êxito parcial','Desfavorável','Encerrado','Suspenso'];
+let cases=[];
+try{cases=JSON.parse(localStorage.getItem(KEY)||'[]');if(!Array.isArray(cases))cases=[]}catch(e){cases=[]}
+const $=id=>document.getElementById(id);
+const money=n=>(Number(n)||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:2});
+const number=n=>(Number(n)||0).toLocaleString('pt-BR',{maximumFractionDigits:2});
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+// ---- CPF / CNPJ ----
+const onlyDigits=s=>String(s??'').replace(/\D/g,'');
+function formatDoc(v){const d=onlyDigits(v).slice(0,14);if(d.length<=11)return d.replace(/^(\d{3})(\d)/,'$1.$2').replace(/^(\d{3})\.(\d{3})(\d)/,'$1.$2.$3').replace(/\.(\d{3})(\d{1,2})$/,'.$1-$2');return d.replace(/^(\d{2})(\d)/,'$1.$2').replace(/^(\d{2})\.(\d{3})(\d)/,'$1.$2.$3').replace(/\.(\d{3})(\d)/,'.$1/$2').replace(/(\d{4})(\d{1,2})$/,'$1-$2')}
+function validCpf(d){if(d.length!==11||/^(\d)\1+$/.test(d))return false;for(let t=9;t<11;t++){let s=0;for(let i=0;i<t;i++)s+=+d[i]*(t+1-i);if(((s*10)%11)%10!==+d[t])return false}return true}
+function validCnpj(d){if(d.length!==14||/^(\d)\1+$/.test(d))return false;const w=[6,5,4,3,2,9,8,7,6,5,4,3,2];for(const t of [12,13]){let s=0;for(let i=0;i<t;i++)s+=+d[i]*w[i+(13-t)];const r=s%11<2?0:11-s%11;if(r!==+d[t])return false}return true}
+function docStatus(v){const d=onlyDigits(v);if(!d)return {ok:true,msg:'Formatação e dígitos verificadores conferidos automaticamente.'};if(d.length===11)return validCpf(d)?{ok:true,msg:'CPF válido.'}:{ok:false,msg:'CPF inválido — confira os dígitos.'};if(d.length===14)return validCnpj(d)?{ok:true,msg:'CNPJ válido.'}:{ok:false,msg:'CNPJ inválido — confira os dígitos.'};return {ok:false,msg:'Informe 11 dígitos (CPF) ou 14 dígitos (CNPJ).'}}
+// ---- CDAs ----
+const CDA_FIELDS=['number','origin','principal','multa','jurosPrincipal','jurosMulta','jurosTotal','balance','balanceDate','manualReduction','notes'];
+const CDA_NUM=['principal','multa','jurosPrincipal','jurosMulta','jurosTotal','balance','manualReduction'];
+const normCda=s=>onlyDigits(s).replace(/^0+/,'');
+function cdaCalc(x){
+ const P=+x.principal||0,M=+x.multa||0,JM=+x.jurosMulta||0,JT=+x.jurosTotal||0,manual=+x.manualReduction||0;
+ const excess=Math.max(0,M-P);let interest=0,method='';
+ if(JM>0&&M>0){interest=JM*excess/M;method='juros da multa × excesso ÷ multa'}
+ else if(JT>0&&(P+M)>0){interest=JT*excess/(P+M);method='juros totais × excesso ÷ (tributo + multa)'}
+ const auto=excess+interest;
+ return {excess,interest,auto,total:manual>0?manual:auto,manual:manual>0,method,ratio:P>0?M/P:null};
+}
+const caseCdaReduction=c=>(c.cdas||[]).reduce((a,x)=>a+cdaCalc(x).total,0);
+const feeBreakdown=c=>{
+ if(c.feeMode==='fixed') return [{label:'Valor fixo estimado',base:+c.feeFixed||0,rate:null,amount:+c.feeFixed||0}];
+ if(c.feeMode!=='escalonado') return [{label:'Percentual simples',base:+c.benefit||0,rate:+c.feePercent||0,amount:(+c.benefit||0)*(+c.feePercent||0)/100}];
+ const base=Math.max(0,+c.benefit||0), sm=Math.max(0.01,+c.minimumWage||1621), profile=c.tierProfile||'mid';
+ const bands=[
+  {label:'Até 200 salários mínimos',limit:200*sm,rates:{min:10,mid:15,max:20}},
+  {label:'De 200 a 2.000 salários mínimos',limit:2000*sm,rates:{min:8,mid:9,max:10}},
+  {label:'De 2.000 a 20.000 salários mínimos',limit:20000*sm,rates:{min:5,mid:6.5,max:8}},
+  {label:'De 20.000 a 100.000 salários mínimos',limit:100000*sm,rates:{min:3,mid:4,max:5}},
+  {label:'Acima de 100.000 salários mínimos',limit:Infinity,rates:{min:1,mid:2,max:3}}
+ ];
+ let lower=0, result=[];
+ for(const band of bands){
+  const slice=Math.max(0,Math.min(base,band.limit)-lower);
+  if(slice>0) result.push({label:band.label,base:slice,rate:band.rates[profile]??band.rates.mid,amount:slice*(band.rates[profile]??band.rates.mid)/100});
+  lower=band.limit;
+  if(base<=lower) break;
+ }
+ return result;
+};
+const grossFee=c=>feeBreakdown(c).reduce((sum,t)=>sum+t.amount,0);
+const fee=c=>grossFee(c)*(c.feeHalf==='Sim'?0.5:1);
+const weighted=c=>fee(c)*(+c.probability||0)/100;
+const outstanding=c=>Math.max(0,fee(c)-(+c.feeReceived||0));
+const active=c=>!['Encerrado','Desfavorável'].includes(c.status);
+const persist=()=>localStorage.setItem(KEY,JSON.stringify(cases));
+const PEND_KEY='lexfinance_pendentes_v1',SYNC_FLAG='lexfinance_nuvem_ok_v1';
+let pending={};try{pending=JSON.parse(localStorage.getItem(PEND_KEY)||'{}')||{}}catch(e){pending={}}
+const savePending=()=>localStorage.setItem(PEND_KEY,JSON.stringify(pending));
+let syncing=false,syncAgain=false,writes=0;
+const tracked=async p=>{writes++;try{return await p}finally{writes--}};
+function setStatus(state,msg){const el=$('syncStatus');if(!el)return;el.className='syncstatus '+state;el.textContent=({ok:'● Sincronizado',busy:'● Sincronizando…',err:'● Não sincronizado'})[state];el.title=msg||''}
+function explainError(e){const m=(e&&(e.message||e.details))||String(e),code=e&&e.code;if(code==='42P01'||code==='PGRST205'||/does not exist|schema cache/i.test(m))return 'a tabela "processos_jppp" não existe no Supabase (rode o script supabase_setup.sql)';if(code==='42501'||/row-level security|permission denied|JWT/i.test(m))return 'sem permissão no Supabase (verifique as políticas RLS no supabase_setup.sql)';if(/Failed to fetch|NetworkError|Load failed/i.test(m))return 'sem internet ou Supabase inacessível';return m}
+async function cloudUpsert(items){if(!items.length)return;const rows=items.map(c=>({id:String(c.id),dados:c}));const {error}=await supabase.from('processos_jppp').upsert(rows,{onConflict:'id'});if(error)throw error}
+async function cloudDelete(id){const {error}=await supabase.from('processos_jppp').delete().eq('id',String(id));if(error)throw error}
+async function cloudReplaceAll(items){
+ await cloudUpsert(items);
+ let q=supabase.from('processos_jppp').delete();
+ q=items.length?q.not('id','in','('+items.map(c=>'"'+String(c.id).replace(/"/g,'')+'"').join(',')+')'):q.not('id','is',null);
+ const {error}=await q;if(error)throw error;
+}
+async function flushPending(){
+ const ups=[],dels=[];
+ Object.entries(pending).forEach(([id,op])=>{if(op==='delete')dels.push(id);else{const c=cases.find(x=>String(x.id)===id);if(c)ups.push(c);else delete pending[id]}});
+ await cloudUpsert(ups);
+ for(const id of dels)await cloudDelete(id);
+ pending={};savePending();
+}
+async function syncFromCloud(silent){
+ if(syncing||writes>0){syncAgain=true;return 'busy'}
+ syncing=true;setStatus('busy');let result='loaded';
+ try{
+  if(Object.keys(pending).length)await flushPending();
+  const {data,error}=await supabase.from('processos_jppp').select('id,dados');
+  if(error)throw error;
+  if(writes>0){syncAgain=true;return 'busy'}
+  const remote=(data||[]).map(r=>r.dados).filter(Boolean);
+  if(!localStorage.getItem(SYNC_FLAG)){
+   const remoteIds=new Set(remote.map(c=>String(c.id)));
+   const localOnly=cases.filter(c=>!remoteIds.has(String(c.id)));
+   if(localOnly.length){
+    if(confirm('Este navegador tem '+localOnly.length+' processo(s) que ainda não estão no banco compartilhado. Deseja enviá-los agora para que todos os dispositivos os vejam?')){await cloudUpsert(localOnly);remote.push(...localOnly);result='migrated'}
+    else localStorage.setItem(KEY+'_backup_local',JSON.stringify(localOnly));
+   }
+   localStorage.setItem(SYNC_FLAG,'1');
+  }
+  remote.sort((a,b)=>String(a.createdAt||'').localeCompare(String(b.createdAt||'')));
+  cases=remote;persist();render();renderRequisitorios();
+  setStatus('ok','Última sincronização: '+new Date().toLocaleTimeString('pt-BR'));
+  if(!silent)toast(result==='migrated'?'Dados locais enviados ao banco compartilhado.':'Dados sincronizados com o banco compartilhado.');
+ }catch(e){console.error(e);const why=explainError(e);setStatus('err',why);if(!silent)toast('⚠ Não foi possível sincronizar: '+why,7000)}
+ finally{syncing=false;if(syncAgain){syncAgain=false;setTimeout(()=>syncFromCloud(true),300)}}
+ return result;
+}
+const toast=(m,ms=2600)=>{const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>t.classList.remove('show'),ms)};
+const badge=s=>{let cl=({'Êxito obtido':'green','Êxito parcial':'blue','Desfavorável':'red','Suspenso':'amber','Aguardando recebimento':'amber','Encerrado':'','Em andamento':'blue'})[s]||'';return `<span class="badge ${cl}">${esc(s||'—')}</span>`};
+const emptyRow=(cols,msg)=>`<tr><td colspan="${cols}"><div class="empty"><strong>${msg}</strong>Cadastre um processo para começar a acompanhar sua carteira.</div></td></tr>`;
+function initSelects(){ $('stage').innerHTML=STAGES.map(s=>`<option>${s}</option>`).join('');$('filterStage').innerHTML='<option value="">Todas as fases</option>'+STAGES.map(s=>`<option>${s}</option>`).join('');$('filterStatus').innerHTML='<option value="">Todos os status</option>'+STATUSES.map(s=>`<option>${s}</option>`).join('')}
+function renderMetrics(target='metrics'){
+ const all=cases, act=all.filter(active), totalBenefit=act.reduce((a,c)=>a+(+c.benefit||0),0), totalFees=act.reduce((a,c)=>a+fee(c),0), weightedFees=act.reduce((a,c)=>a+weighted(c),0), received=all.reduce((a,c)=>a+(+c.feeReceived||0),0);
+ const fixedFees=act.reduce((a,c)=>a+(+c.judicialFeeAmount||0),0);
+ const cards=[
+ ['Processos ativos',number(act.length),'Em andamento ou aguardando desfecho','▤'],
+ ['Proveito econômico esperado',money(totalBenefit),'Somente processos ativos','↗'],
+ ['Honorários potenciais',money(totalFees),'Estimativa bruta cadastrada','◇'],
+ ['Honorários fixados',money(fixedFees),'Valores efetivamente fixados judicialmente','§']
+ ];
+ $(target).innerHTML=cards.map(x=>`<div class="metric"><div class="label"><span>${x[0]}</span><span class="mark">${x[3]}</span></div><div class="value">${x[1]}</div><div class="sub">${x[2]}</div></div>`).join('');
+}
+function row(c,showProb=false){return `<tr>
+<td data-label="Processo / cliente"><div class="case-name">${esc(c.client)}</div><div class="case-sub">${esc(c.number||c.subject||'Sem número cadastrado')}</div>${(c.clientDoc||(c.cdas||[]).length)?`<div class="case-sub">${[c.clientDoc?esc(c.clientDoc):'',(c.cdas||[]).length?`${(c.cdas||[]).length} CDA${(c.cdas||[]).length>1?'s':''}`:''].filter(Boolean).join(' · ')}</div>`:''}</td>
+<td data-label="Fase">${esc(c.stage)}</td>
+<td data-label="Proveito esperado" class="money">${money(c.benefit)}</td>
+<td data-label="Honorários estimados"><div class="money">${money(fee(c))}</div><div class="case-sub">Ponderados: ${money(weighted(c))}</div></td>
+${showProb?`<td data-label="Êxito">${number(c.probability)}%</td>`:''}
+<td data-label="Status">${badge(c.status)}</td>
+<td data-label="Ações"><div class="actions"><button class="iconbtn" title="Editar processo" data-edit="${esc(c.id)}">✎</button><button class="iconbtn" title="Duplicar processo" data-duplicate="${esc(c.id)}">⧉</button></div></td>
+</tr>`}
+function render(){
+ renderMetrics();
+ const sorted=[...cases].sort((a,b)=>(b.updatedAt||b.createdAt||'').localeCompare(a.updatedAt||a.createdAt||''));
+ $('recentRows').innerHTML=sorted.slice(0,5).map(c=>row(c)).join('')||emptyRow(6,'Sua carteira está vazia');
+ const q=($('search').value||'').toLowerCase(), fs=$('filterStatus').value, fg=$('filterStage').value, sort=$('sortBy').value;
+ const qd=onlyDigits(q);
+ let list=cases.filter(c=>(!q||[c.client,c.number,c.subject,c.court,c.opponent,c.notes,c.clientDoc,...(c.cdas||[]).map(x=>x.number)].join(' ').toLowerCase().includes(q)||(qd.length>=5&&(onlyDigits(c.clientDoc).includes(qd)||(c.cdas||[]).some(x=>normCda(x.number).includes(qd.replace(/^0+/,''))))))&&(!fs||c.status===fs)&&(!fg||c.stage===fg));
+ list.sort((a,b)=>sort==='benefit'?(+b.benefit||0)-(+a.benefit||0):sort==='fees'?fee(b)-fee(a):sort==='name'?a.client.localeCompare(b.client):((b.updatedAt||b.createdAt||'').localeCompare(a.updatedAt||a.createdAt||'')));
+ $('caseRows').innerHTML=list.map(c=>row(c,true)).join('')||emptyRow(7,'Nenhum processo encontrado');
+ renderBars();renderReports();bindRows();if(!$('page-requisitorios').classList.contains('hidden'))renderRequisitorios();if(!$('page-clientes').classList.contains('hidden'))renderClients();
+}
+function renderBars(){
+ const act=cases.filter(active), groups=STAGES.map(s=>({s,amount:act.filter(c=>c.stage===s).reduce((a,c)=>a+fee(c),0)})).filter(g=>g.amount>0).sort((a,b)=>b.amount-a.amount);
+ const max=Math.max(1,...groups.map(g=>g.amount));
+ $('stageBars').innerHTML=groups.length?groups.map(g=>`<div class="barrow"><span>${esc(g.s)}</span><div class="track"><div class="fill" style="width:${Math.max(2,g.amount/max*100)}%"></div></div><strong style="text-align:right">${money(g.amount)}</strong></div>`).join(''):'<div class="empty"><strong>Sem dados para exibir</strong>Cadastre processos com honorários estimados.</div>';
+ const cnt=STATUSES.map(s=>({s,n:cases.filter(c=>c.status===s).length})).filter(g=>g.n);
+ $('stageCounts').innerHTML=cnt.length?cnt.map(g=>`<div class="stage"><div class="left"><span class="dot"></span><span>${esc(g.s)}</span></div><strong>${g.n}</strong></div>`).join(''):'<div class="empty">Nenhum processo cadastrado.</div>';
+}
+function netRequisition(c){const amount=Math.max(0,+c.requisitionAmount||0),discount=Math.min(100,Math.max(0,+c.discountPct||0));return amount*(1-discount/100)}
+function renderRequisitorios(){
+ const listAll=cases.filter(c=>c.requisitionType==='RPV'||c.requisitionType==='Precatório');
+ const issued=listAll.filter(c=>c.requisitionStatus==='Expedido'||c.requisitionStatus==='Pago').length;
+ const sold=listAll.filter(c=>c.sold==='Sim');
+ const soldValue=sold.reduce((a,c)=>a+netRequisition(c),0);
+ $('requisitorioMetrics').innerHTML=[['RPVs e precatórios',number(listAll.length),'Processos com tipo de requisição definido'],['Cumprimentos iniciados',number(listAll.filter(c=>c.complianceFiled==='Sim').length),'Cumprimento de sentença informado'],['Expedidos ou pagos',number(issued),'Requisições expedidas ou pagas'],['Valor líquido das vendas',money(soldValue),'Estimativa após deságio informado']].map(x=>`<div class="metric"><div class="label">${x[0]}</div><div class="value">${x[1]}</div><div class="sub">${x[2]}</div></div>`).join('');
+ const q=($('reqSearch').value||'').toLowerCase(),type=$('reqTypeFilter').value,comp=$('reqComplianceFilter').value,issuedFilter=$('reqIssuedFilter').value,soldFilter=$('reqSoldFilter').value;
+ const list=listAll.filter(c=>(!q||[c.client,c.number,c.subject,c.saleNotes].join(' ').toLowerCase().includes(q))&&(!type||c.requisitionType===type)&&(!comp||c.complianceFiled===comp)&&(!issuedFilter||(issuedFilter==='Expedido'?['Expedido','Pago'].includes(c.requisitionStatus):c.requisitionStatus==='Não expedido'))&&(!soldFilter||c.sold===soldFilter)).sort((a,b)=>(b.requisitionDate||b.updatedAt||'').localeCompare(a.requisitionDate||a.updatedAt||''));
+ $('requisitorioRows').innerHTML=list.map(c=>`<tr><td data-label="Cliente / processo"><div class="case-name">${esc(c.client)}</div><div class="case-sub">${esc(c.number||c.subject||'Sem número cadastrado')}</div></td><td data-label="Tipo">${esc(c.requisitionType)}</td><td data-label="Cumprimento">${badge(c.complianceFiled==='Sim'?'Iniciado':'Não iniciado')}</td><td data-label="Expedição">${badge(c.requisitionStatus||'Não expedido')}</td><td data-label="Valor requisitado" class="money">${money(c.requisitionAmount)}</td><td data-label="Venda / deságio">${c.sold==='Sim'?`Vendido · ${number(c.discountPct)}%${c.saleDate?`<div class="case-sub">${esc(c.saleDate)}</div>`:''}`:'Não vendido'}</td><td data-label="Valor líquido estimado" class="money">${money(netRequisition(c))}</td><td data-label="Ações"><div class="actions"><button class="iconbtn" title="Editar processo" data-edit="${esc(c.id)}">✎</button></div></td></tr>`).join('')||emptyRow(8,'Nenhuma RPV ou precatório cadastrado');
+ bindRows();
+}
+function updateRequisitionPreview(){const amount=Math.max(0,+$('requisitionAmount').value||0),discount=Math.min(100,Math.max(0,+$('discountPct').value||0));$('netValuePreview').innerHTML=`<strong>Valor líquido estimado após o deságio:</strong> ${money(amount*(1-discount/100))}`}
+function renderReports(){
+ const all=cases, activeCases=all.filter(active), potential=activeCases.reduce((a,c)=>a+fee(c),0), w=activeCases.reduce((a,c)=>a+weighted(c),0), recv=all.reduce((a,c)=>a+(+c.feeReceived||0),0), benefit=activeCases.reduce((a,c)=>a+(+c.benefit||0),0);
+ $('reportMetrics').innerHTML=[
+ ['Proveito esperado ativo',money(benefit),'Soma dos processos ativos'],
+ ['Honorários potenciais ativos',money(potential),'Estimativa bruta'],
+ ['Honorários ponderados',money(w),'Ajustados pela probabilidade'],
+ ['Honorários recebidos',money(recv),'Total informado em todos os registros']
+ ].map(x=>`<div class="metric"><div class="label">${x[0]}</div><div class="value">${x[1]}</div><div class="sub">${x[2]}</div></div>`).join('');
+ $('reportRows').innerHTML=STAGES.map(s=>{let g=all.filter(c=>c.stage===s);return g.length?`<tr><td data-label="Fase">${esc(s)}</td><td data-label="Processos">${g.length}</td><td data-label="Proveito">${money(g.reduce((a,c)=>a+(+c.benefit||0),0))}</td><td data-label="Honorários potenciais">${money(g.reduce((a,c)=>a+fee(c),0))}</td><td data-label="Honorários ponderados">${money(g.reduce((a,c)=>a+weighted(c),0))}</td></tr>`:''}).join('')||emptyRow(5,'Sem dados para relatório');
+}
+function go(page){document.querySelectorAll('[id^="page-"]').forEach(el=>el.classList.add('hidden'));$('page-'+page).classList.remove('hidden');document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===page));$('topTitle').textContent=({'dashboard':'Visão geral','processos':'Processos','clientes':'Clientes','requisitorios':'RPVs e precatórios','relatorios':'Relatórios','dados':'Dados e segurança'})[page];$('sidebar').classList.remove('open');if(page==='processos')render();if(page==='clientes')renderClients();if(page==='requisitorios')renderRequisitorios()}
+function updateFeeFields(){
+ const mode=$('feeMode').value;
+ $('feePercentField').classList.toggle('hidden',mode!=='percent');
+ $('feeFixedField').classList.toggle('hidden',mode!=='fixed');
+ $('minimumWageField').classList.toggle('hidden',mode!=='escalonado');
+ $('tierProfileField').classList.toggle('hidden',mode!=='escalonado');
+ $('tierPreviewField').classList.toggle('hidden',mode!=='escalonado');
+ if(mode==='escalonado'){
+  const base=Math.max(0,+$('benefit').value||0), sm=Math.max(.01,+$('minimumWage').value||1621), profile=$('tierProfile').value;
+  const fake={feeMode:'escalonado',benefit:base,minimumWage:sm,tierProfile:profile,feeHalf:$('feeHalf').value};
+  const lines=feeBreakdown(fake);
+  $('tierPreview').innerHTML='<strong>Memória de cálculo estimada</strong><br>'+lines.map(t=>`${esc(t.label)}: ${money(t.base)} × ${number(t.rate)}% = <strong>${money(t.amount)}</strong>`).join('<br>')+'<br><br><strong>Total estimado'+(fake.feeHalf==='Sim'?' após redução de 50% (art. 90, § 4º, CPC)':'')+': '+money(fee(fake))+'</strong><br><span style="color:#6c707c">Cálculo progressivo por parcela da base em cada faixa, não aplicação de uma única alíquota sobre todo o valor.</span>';
+ }
+}
+let formCdas=[];
+function cdaResultHtml(x){const r=cdaCalc(x);if(!(+x.principal||+x.multa||+x.manualReduction))return 'Preencha principal e multa para estimar a redução.';return `${r.ratio!==null?`Multa = ${number(r.ratio*100)}% do tributo · `:''}Excesso de multa: <strong>${money(r.excess)}</strong> · Redução de juros: <strong>${money(r.interest)}</strong>${r.method?` <span style="color:#6c707c">(${r.method})</span>`:''}<br>${r.manual?`Redução automática: ${money(r.auto)} · <strong>Redução manual usada: ${money(r.total)}</strong>`:`<strong>Redução estimada: ${money(r.total)}</strong>`}`}
+function renderCdaSummary(){const n=formCdas.length,t=formCdas.reduce((a,x)=>a+cdaCalc(x).total,0),bal=formCdas.reduce((a,x)=>a+(+x.balance||0),0);$('cdaSummary').innerHTML=n?`<strong>${n} CDA${n>1?'s':''}</strong> · Saldo atual somado: ${money(bal)} · <strong>Redução total estimada: ${money(t)}</strong>`:'Nenhuma CDA cadastrada.'}
+function renderCdaEditor(){
+ const f=(i,k,label,type='number',cls='')=>`<div class="field ${cls}"><label>${label}</label><input data-cda="${i}" data-k="${k}" ${type==='number'?'type="number" step="0.01" min="0" placeholder="0,00"':type==='date'?'type="date"':''} value="${esc(formCdas[i][k]??'')}"></div>`;
+ $('cdaList').innerHTML=formCdas.map((x,i)=>`<div class="cda-card"><div class="cda-card-head"><strong>CDA ${i+1}${x.number?' — '+esc(x.number):''}</strong><button type="button" class="btn small danger" data-cda-remove="${i}">Remover</button></div><div class="cda-grid">
+ ${f(i,'number','Nº da CDA','text','wide')}${f(i,'origin','Ente / origem','text','wide')}
+ ${f(i,'principal','Principal / tributo (R$)')}${f(i,'multa','Multa (R$)')}${f(i,'jurosPrincipal','Juros do principal (R$)')}${f(i,'jurosMulta','Juros da multa (R$)')}
+ ${f(i,'jurosTotal','Juros totais (R$)')}${f(i,'balance','Saldo atual (R$)')}${f(i,'balanceDate','Data do saldo','date')}${f(i,'manualReduction','Redução manual (R$)')}
+ ${f(i,'notes','Observações','text','wide')}
+ </div><div class="cda-result" id="cdaResult${i}">${cdaResultHtml(x)}</div></div>`).join('');
+ $('cdaList').querySelectorAll('[data-cda]').forEach(el=>el.addEventListener('input',()=>{const i=+el.dataset.cda,k=el.dataset.k;formCdas[i][k]=CDA_NUM.includes(k)?(el.value===''?'':Number(el.value)):el.value;$('cdaResult'+i).innerHTML=cdaResultHtml(formCdas[i]);renderCdaSummary()}));
+ $('cdaList').querySelectorAll('[data-cda-remove]').forEach(b=>b.onclick=()=>{const i=+b.dataset.cdaRemove;if(confirm('Remover a CDA '+(formCdas[i].number||i+1)+' deste processo?')){formCdas.splice(i,1);renderCdaEditor()}});
+ renderCdaSummary();
+}
+function updateDocHint(){const st=docStatus($('clientDoc').value);$('clientDocHint').textContent=st.msg;$('clientDocHint').classList.toggle('err',!st.ok);$('clientDoc').classList.toggle('invalid',!st.ok)}
+function openForm(c=null){
+ $('caseForm').reset();$('caseId').value=c?.id||'';$('modalTitle').textContent=c?'Editar processo':'Novo processo';$('deleteFromForm').classList.toggle('hidden',!c);
+ const defaults={client:'',clientDoc:'',number:'',subject:'',court:'',opponent:'',responsible:'',status:'Em andamento',stage:'Análise inicial',updatedAt:new Date().toISOString().slice(0,10),nextAction:'',requisitionType:'',complianceFiled:'Não',requisitionStatus:'Não expedido',requisitionAmount:0,requisitionDate:'',sold:'Não',discountPct:0,saleDate:'',saleNotes:'',claimValue:'',benefit:'',feeMode:'percent',feePercent:10,feeFixed:'',minimumWage:1621,tierProfile:'mid',probability:50,judicialFeeAmount:0,feeReceived:0,feeStatus:'Não fixados',feeHalf:'Não',notes:''};
+ const data={...defaults,...(c||{})};
+ Object.keys(defaults).forEach(k=>{const el=$(k);if(el)el.value=data[k]??defaults[k]});
+ formCdas=(c?.cdas||[]).map(x=>({...x}));renderCdaEditor();updateDocHint();
+ formCaseId=c?.id||newCaseId();formAtts=(c?.attachments||[]).map(a=>({...a}));attNew=[];attRemoved=[];$('attFile').value='';renderAttachments();
+ updateFeeFields();$('modal').classList.add('show');document.body.style.overflow='hidden';setTimeout(()=>$('client').focus(),80);
+}
+function closeForm(){if(attNew.length){storageRemove(attNew);attNew=[]}attRemoved=[];$('modal').classList.remove('show');document.body.style.overflow=''}
+// ---- Anexos (Supabase Storage) ----
+const BUCKET='anexos-jppp',MAX_FILE=25*1024*1024;
+let formAtts=[],attNew=[],attRemoved=[],formCaseId='';
+const newCaseId=()=>'p_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,7);
+const fmtSize=b=>b>=1048576?number(b/1048576)+' MB':number(Math.max(1,Math.round(b/1024)))+' KB';
+const safeName=n=>String(n).normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^\w.\-]+/g,'_').slice(-120);
+function storageError(e){const m=(e&&(e.message||e.error))||String(e);if(/bucket not found/i.test(m))return 'o bucket "'+BUCKET+'" não existe no Supabase (rode o script supabase_anexos.sql)';if(/row-level security|policy|unauthorized|403/i.test(m))return 'sem permissão no Storage do Supabase (confira as políticas do supabase_anexos.sql)';if(/exceeded|too large|413/i.test(m))return 'arquivo maior que o limite do Supabase';return explainError(e)}
+async function storageRemove(paths){if(!paths.length)return;try{const {error}=await supabase.storage.from(BUCKET).remove(paths);if(error)throw error}catch(e){console.warn('Falha ao remover anexos',paths,e)}}
+function renderAttachments(){
+ $('attList').innerHTML=formAtts.length?formAtts.map((a,i)=>`<div class="att-row"><div><strong>${esc(a.name)}</strong>${attNew.includes(a.path)?' <span class="att-new">· novo, salve o processo</span>':''}<div class="att-meta">${esc(a.category||'Documento')}${a.description?' · '+esc(a.description):''} · ${fmtSize(a.size||0)} · ${a.uploadedAt?new Date(a.uploadedAt).toLocaleString('pt-BR'):''}</div></div><div class="actions"><button type="button" class="btn small" data-att-open="${i}">Abrir</button><button type="button" class="btn small danger" data-att-remove="${i}">Remover</button></div></div>`).join(''):'<div class="case-sub">Nenhum anexo neste processo.</div>';
+ $('attList').querySelectorAll('[data-att-open]').forEach(b=>b.onclick=async()=>{const a=formAtts[+b.dataset.attOpen];const w=window.open('','_blank');try{const {data,error}=await supabase.storage.from(BUCKET).createSignedUrl(a.path,300);if(error)throw error;if(w)w.location=data.signedUrl;else location.href=data.signedUrl}catch(e){if(w)w.close();toast('⚠ Não foi possível abrir o anexo: '+storageError(e),7000)}});
+ $('attList').querySelectorAll('[data-att-remove]').forEach(b=>b.onclick=()=>{const i=+b.dataset.attRemove,a=formAtts[i];if(!confirm('Remover o anexo "'+a.name+'"? Ele será apagado ao salvar o processo.'))return;formAtts.splice(i,1);if(attNew.includes(a.path)){attNew=attNew.filter(p=>p!==a.path);storageRemove([a.path])}else attRemoved.push(a.path);renderAttachments()});
+}
+async function uploadAttachments(){
+ const files=[...$('attFile').files];if(!files.length)return;
+ const category=$('attCategory').value,description=$('attDesc').value.trim();let ok=0;
+ for(const f of files){
+  if(f.size>MAX_FILE){toast('⚠ "'+f.name+'" tem mais de 25 MB e não foi enviado.',6000);continue}
+  const path=formCaseId+'/'+Date.now()+'_'+safeName(f.name);
+  toast('Enviando '+f.name+'…',60000);
+  try{const {error}=await tracked(supabase.storage.from(BUCKET).upload(path,f,{contentType:f.type||'application/octet-stream',upsert:false}));if(error)throw error;
+   formAtts.push({path,name:f.name,size:f.size,type:f.type||'',category,description,uploadedAt:new Date().toISOString()});attNew.push(path);ok++;renderAttachments()}
+  catch(e){console.error(e);toast('⚠ Falha ao enviar "'+f.name+'": '+storageError(e),8000)}
+ }
+ $('attFile').value='';if(ok){$('attDesc').value='';toast(ok+' anexo'+(ok>1?'s enviados':' enviado')+'. Clique em “Salvar processo” para gravar.')}
+}
+// ---- Painel por cliente ----
+const normName=s=>String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/\(cópia\)|\(copia\)/g,'').replace(/\s+/g,' ').trim();
+const openClients=new Set();
+function clientGroups(){
+ const map=new Map();
+ cases.forEach(c=>{const d=onlyDigits(c.clientDoc);const key=d?'d:'+d:'n:'+normName(c.client);if(!map.has(key))map.set(key,{key,doc:c.clientDoc||'',names:new Set(),cases:[]});const g=map.get(key);g.cases.push(c);if(c.client)g.names.add(c.client)});
+ return [...map.values()].map(g=>{const act=g.cases.filter(active);const sorted=[...g.cases].sort((a,b)=>(b.updatedAt||'').localeCompare(a.updatedAt||''));return {...g,name:sorted[0]?.client||'—',names:[...g.names],cdas:g.cases.reduce((a,c)=>a+(c.cdas||[]).length,0),atts:g.cases.reduce((a,c)=>a+(c.attachments||[]).length,0),benefit:act.reduce((a,c)=>a+(+c.benefit||0),0),fees:act.reduce((a,c)=>a+fee(c),0),fixed:g.cases.reduce((a,c)=>a+(+c.judicialFeeAmount||0),0),received:g.cases.reduce((a,c)=>a+(+c.feeReceived||0),0),active:act.length}});
+}
+function renderClients(){
+ const groups=clientGroups();
+ $('clientMetrics').innerHTML=[['Clientes',number(groups.length),'Agrupados por CPF/CNPJ ou nome'],['Com CPF/CNPJ',number(groups.filter(g=>onlyDigits(g.doc)).length),'Documento cadastrado'],['CDAs cadastradas',number(groups.reduce((a,g)=>a+g.cdas,0)),'Soma de todos os processos'],['Anexos',number(groups.reduce((a,g)=>a+g.atts,0)),'Arquivos guardados nos processos']].map(x=>`<div class="metric"><div class="label">${x[0]}</div><div class="value">${x[1]}</div><div class="sub">${x[2]}</div></div>`).join('');
+ const q=($('clientSearch').value||'').toLowerCase(),qd=onlyDigits(q),sort=$('clientSort').value;
+ let list=groups.filter(g=>!q||[g.names.join(' '),g.doc,...g.cases.map(c=>[c.number,...(c.cdas||[]).map(x=>x.number)].join(' '))].join(' ').toLowerCase().includes(q)||(qd.length>=5&&(onlyDigits(g.doc).includes(qd)||g.cases.some(c=>onlyDigits(c.number).includes(qd)||(c.cdas||[]).some(x=>normCda(x.number).includes(qd.replace(/^0+/,'')))))));
+ list.sort((a,b)=>sort==='benefit'?b.benefit-a.benefit:sort==='cases'?b.cases.length-a.cases.length:sort==='name'?a.name.localeCompare(b.name):b.fees-a.fees);
+ $('clientRows').innerHTML=list.map(g=>{const open=openClients.has(g.key);return `<tr><td data-label="Cliente"><div class="case-name">${esc(g.name)}</div><div class="case-sub">${g.doc?esc(g.doc):'<span style="color:#986500">Sem CPF/CNPJ</span>'}${g.names.length>1?' · também como: '+esc(g.names.filter(n=>n!==g.name).join(', ')):''}</div></td><td data-label="Processos">${g.cases.length}${g.active!==g.cases.length?` <span class="case-sub">(${g.active} ativos)</span>`:''}</td><td data-label="CDAs">${g.cdas}</td><td data-label="Proveito esperado" class="money">${money(g.benefit)}</td><td data-label="Honorários estimados" class="money">${money(g.fees)}</td><td data-label="Fixados / recebidos"><div class="money">${money(g.fixed)}</div><div class="case-sub">Recebidos: ${money(g.received)}</div></td><td data-label=""><button class="linkbtn" data-client-toggle="${esc(g.key)}">${open?'Ocultar ▲':'Ver processos ▼'}</button></td></tr>${open?`<tr class="client-detail"><td colspan="7"><table><thead><tr><th>Processo</th><th>Fase / status</th><th>CDAs</th><th>Proveito</th><th>Honorários</th><th>Anexos</th><th></th></tr></thead><tbody>${g.cases.map(c=>`<tr><td data-label="Processo"><div class="case-name">${esc(c.number||'Sem número')}</div><div class="case-sub">${esc(c.subject||'')}</div></td><td data-label="Fase / status">${esc(c.stage)}<div class="case-sub">${esc(c.status)}</div></td><td data-label="CDAs" style="white-space:normal;max-width:260px">${(c.cdas||[]).map(x=>esc(x.number)).filter(Boolean).join(', ')||'—'}</td><td data-label="Proveito" class="money">${money(c.benefit)}</td><td data-label="Honorários" class="money">${money(fee(c))}</td><td data-label="Anexos">${(c.attachments||[]).length}</td><td data-label=""><button class="iconbtn" title="Editar processo" data-edit="${esc(c.id)}">✎</button></td></tr>`).join('')}</tbody></table></td></tr>`:''}`}).join('')||emptyRow(7,'Nenhum cliente encontrado');
+ $('clientRows').querySelectorAll('[data-client-toggle]').forEach(b=>b.onclick=()=>{const k=b.dataset.clientToggle;openClients.has(k)?openClients.delete(k):openClients.add(k);renderClients()});
+ bindRows();
+}
+async function save(e){e.preventDefault();const id=$('caseId').value||formCaseId||newCaseId();const old=cases.find(c=>c.id===id);const c={id,createdAt:old?.createdAt||new Date().toISOString(),updatedAt:$('updatedAt').value||new Date().toISOString().slice(0,10)};
+ ['client','clientDoc','number','subject','court','opponent','responsible','status','stage','updatedAt','nextAction','requisitionType','complianceFiled','requisitionStatus','requisitionAmount','requisitionDate','sold','discountPct','saleDate','saleNotes','claimValue','benefit','feeMode','feePercent','feeFixed','minimumWage','tierProfile','probability','judicialFeeAmount','feeReceived','feeStatus','feeHalf','notes'].forEach(k=>{let el=$(k);c[k]=['claimValue','benefit','feePercent','feeFixed','minimumWage','probability','judicialFeeAmount','feeReceived','requisitionAmount','discountPct'].includes(k)?(el.value===''?0:Number(el.value)):el.value});
+ c.clientDoc=formatDoc(c.clientDoc);
+ c.cdas=formCdas.filter(x=>CDA_FIELDS.some(k=>String(x[k]??'').trim()!=='')).map(x=>{const o={};CDA_FIELDS.forEach(k=>o[k]=CDA_NUM.includes(k)?(x[k]===''||x[k]==null?0:Number(x[k])):String(x[k]??'').trim());return o});
+ const seen=new Set(),dupInside=[],dupOther=[];
+ c.cdas.forEach(x=>{const n=normCda(x.number);if(!n)return;if(seen.has(n))dupInside.push(x.number);seen.add(n);const other=cases.find(o=>o.id!==id&&(o.cdas||[]).some(y=>normCda(y.number)===n));if(other)dupOther.push(x.number+' (em '+other.client+' — '+(other.number||'sem número')+')')});
+ if(dupInside.length&&!confirm('CDA repetida neste processo: '+dupInside.join(', ')+'. Salvar mesmo assim?'))return;
+ if(dupOther.length&&!confirm('Estas CDAs já estão cadastradas em outro processo:\n'+dupOther.join('\n')+'\n\nSalvar mesmo assim?'))return;
+ if(!docStatus(c.clientDoc).ok&&!confirm('O CPF/CNPJ informado parece inválido. Salvar mesmo assim?'))return;
+ c.attachments=formAtts.map(a=>({...a}));const removedNow=attRemoved.slice();attNew=[];attRemoved=[];
+ if(old)cases=cases.map(x=>x.id===id?c:x);else cases.unshift(c);
+ persist();pending[id]='upsert';savePending();
+ try{await tracked(cloudUpsert([c]));delete pending[id];savePending();setStatus('ok');storageRemove(removedNow);closeForm();render();toast(old?'Processo atualizado e compartilhado.':'Processo cadastrado e compartilhado.')}catch(err){console.error(err);const why=explainError(err);setStatus('err',why);closeForm();render();toast('⚠ NÃO foi enviado ao banco: '+why+'. Ficou salvo só neste navegador e será reenviado automaticamente quando a conexão voltar.',9000)}}
+function bindRows(){document.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>{let c=cases.find(x=>x.id===b.dataset.edit);if(c)openForm(c)});document.querySelectorAll('[data-duplicate]').forEach(b=>b.onclick=()=>{let c=cases.find(x=>x.id===b.dataset.duplicate);if(c)openForm({...c,id:'',client:c.client+' (cópia)',number:'',cdas:[],attachments:[],createdAt:null,updatedAt:new Date().toISOString().slice(0,10)})});}
+function download(name,content,type){const blob=new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+function exportJson(){download('jppp-comercial-backup-'+new Date().toISOString().slice(0,10)+'.json',JSON.stringify({app:'JPPP Comercial',version:1,exportedAt:new Date().toISOString(),cases},null,2),'application/json')}
+function csvCell(v){return '"'+String(v??'').replace(/"/g,'""')+'"'}
+function exportCsv(){const cols=[['Cliente','client'],['CPF/CNPJ','clientDoc'],['Número do processo','number'],['CDAs','computedCdaList'],['Redução estimada pelas CDAs (R$)','computedCdaReduction'],['Assunto','subject'],['Tribunal / vara','court'],['Parte contrária','opponent'],['Status','status'],['Fase','stage'],['Tipo de requisição','requisitionType'],['Cumprimento de sentença iniciado','complianceFiled'],['Situação da expedição','requisitionStatus'],['Valor requisitado (R$)','requisitionAmount'],['Data de expedição','requisitionDate'],['Vendido/cedido','sold'],['Deságio (%)','discountPct'],['Data da venda','saleDate'],['Valor líquido estimado (R$)','computedNetRequisition'],['Observações da requisição','saleNotes'],['Proveito econômico esperado (R$)','benefit'],['Método honorários','feeMode'],['Percentual honorários','feePercent'],['Honorários fixos (R$)','feeFixed'],['Honorários estimados (R$)','computedFee'],['Honorários ponderados (R$)','weightedFee'],['Probabilidade de êxito (%)','probability'],['Honorários fixados judicialmente (R$)','judicialFeeAmount'],['Honorários recebidos (R$)','feeReceived'],['Redução de 50% — art. 90, § 4º, CPC','feeHalf'],['Situação honorários','feeStatus'],['Última atualização','updatedAt'],['Próxima providência','nextAction'],['Anotações','notes']];const lines=[cols.map(c=>csvCell(c[0])).join(';'),...cases.map(c=>cols.map(([label,k])=>csvCell(k==='computedFee'?fee(c):k==='weightedFee'?weighted(c):k==='computedNetRequisition'?netRequisition(c):k==='computedCdaList'?(c.cdas||[]).map(x=>x.number).filter(Boolean).join(', '):k==='computedCdaReduction'?caseCdaReduction(c):c[k])).join(';'))];download('jppp-comercial-processos-'+new Date().toISOString().slice(0,10)+'.csv','\ufeff'+lines.join('\r\n'),'text/csv;charset=utf-8')}
+let importData=null;
+function readImport(){const f=$('importFile').files[0];if(!f){toast('Selecione um arquivo JSON primeiro.');return null}return f.text().then(t=>{const d=JSON.parse(t),arr=Array.isArray(d)?d:d.cases;if(!Array.isArray(arr))throw new Error('Formato de backup inválido');return arr})}
+async function importCases(replace){try{const incoming=await readImport();if(!incoming)return;if(!confirm(replace?'Isso substituirá todos os processos do banco compartilhado (para todos os usuários). Continuar?':'Os processos do backup serão adicionados sem duplicar IDs. Continuar?'))return;let next,added=[];const norm=c=>({...c,id:c.id||('p_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,7))});if(replace){next=incoming.map(norm)}else{next=[...cases];const ids=new Set(cases.map(c=>String(c.id)));incoming.forEach(c=>{const item=norm(c);if(!ids.has(String(item.id))){next.push(item);added.push(item);ids.add(String(item.id))}})}if(replace)await tracked(cloudReplaceAll(next));else await tracked(cloudUpsert(added));cases=next;persist();setStatus('ok');render();renderRequisitorios();toast('Backup importado e enviado ao banco.');$('importFile').value=''}catch(e){console.error(e);toast('Importação não concluída: '+explainError(e),7000)}}
+document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.page)));
+document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.goto)));
+$('menuBtn').onclick=()=>$('sidebar').classList.toggle('open');
+['newTop','newDash','newCases','newRequisitorio'].forEach(id=>$(id).onclick=()=>openForm());
+$('exportTop').onclick=exportJson;$('exportJson').onclick=exportJson;$('exportCsv').onclick=exportCsv;$('exportCsv2').onclick=exportCsv;
+$('closeModal').onclick=closeForm;$('cancelForm').onclick=closeForm;$('caseForm').onsubmit=save;
+['feeMode','benefit','minimumWage','tierProfile','feeHalf'].forEach(id=>$(id).addEventListener('input',updateFeeFields));
+$('clientDoc').addEventListener('input',()=>{const el=$('clientDoc'),f=formatDoc(el.value);if(el.value!==f)el.value=f;updateDocHint()});
+$('attFile').addEventListener('change',uploadAttachments);
+['clientSearch','clientSort'].forEach(id=>$(id).addEventListener('input',renderClients));
+$('addCda').onclick=()=>{formCdas.push(Object.fromEntries(CDA_FIELDS.map(k=>[k,''])));renderCdaEditor();const inp=$('cdaList').querySelectorAll('[data-k="number"]');inp[inp.length-1]?.focus()};
+$('useCdaBenefit').onclick=()=>{const t=formCdas.reduce((a,x)=>a+cdaCalc(x).total,0);if(!t){toast('Nenhuma redução calculada nas CDAs.');return}$('benefit').value=t.toFixed(2);updateFeeFields();toast('Proveito econômico atualizado para '+money(t)+'.')};
+$('modal').addEventListener('click',e=>{if(e.target===$('modal'))closeForm()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeForm()});
+['search','filterStatus','filterStage','sortBy'].forEach(id=>$(id).addEventListener('input',render));
+['reqSearch','reqTypeFilter','reqComplianceFilter','reqIssuedFilter','reqSoldFilter'].forEach(id=>$(id).addEventListener('input',renderRequisitorios));
+['requisitionAmount','discountPct'].forEach(id=>$(id).addEventListener('input',updateRequisitionPreview));
+$('deleteFromForm').onclick=async()=>{const id=$('caseId').value;if(!id)return;const c=cases.find(x=>x.id===id);if(confirm('Excluir o processo de '+(c?.client||'')+' de todos os usuários? Esta ação não pode ser desfeita.')){const attPaths=[...(c?.attachments||[]).map(a=>a.path),...attNew];attNew=[];cases=cases.filter(x=>x.id!==id);persist();pending[id]='delete';savePending();try{await tracked(cloudDelete(id));delete pending[id];savePending();storageRemove(attPaths);setStatus('ok');closeForm();render();toast('Processo excluído do banco compartilhado.')}catch(e){const why=explainError(e);setStatus('err',why);closeForm();render();toast('⚠ Excluído só neste navegador ('+why+'). A exclusão será reenviada automaticamente.',9000)}}};
+$('mergeImport').onclick=()=>importCases(false);$('replaceImport').onclick=()=>importCases(true);
+$('clearData').onclick=async()=>{if(confirm('Tem certeza de que deseja apagar TODOS os processos do banco compartilhado para todos os usuários? Faça backup antes.')){try{await tracked(cloudReplaceAll([]));cases=[];pending={};savePending();persist();setStatus('ok');render();renderRequisitorios();toast('Todos os processos compartilhados foram apagados.')}catch(e){toast('Não foi possível apagar no banco: '+explainError(e),7000)}}};
+initSelects();render();renderRequisitorios();updateRequisitionPreview();
+$('syncBtn').onclick=()=>syncFromCloud(false);
+let syncTimer;const scheduleSync=()=>{clearTimeout(syncTimer);syncTimer=setTimeout(()=>syncFromCloud(true),400)};
+try{supabase.channel('processos-jppp').on('postgres_changes',{event:'*',schema:'public',table:'processos_jppp'},scheduleSync).subscribe()}catch(e){console.warn('Realtime indisponível; usando atualização periódica.',e)}
+setInterval(()=>{if(!document.hidden)syncFromCloud(true)},30000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)syncFromCloud(true)});
+window.addEventListener('online',()=>syncFromCloud(true));
+syncFromCloud(false);
+})();
+</script>
+</body>
+</html>
